@@ -5,11 +5,11 @@ from django.shortcuts import render
 
 
 def index(request):
-    Test_app = [
-        {'title': "Tester"},
-        {'title': "kukTester"}
-    ]
+    Test_app = [[i for i in range(7)] for _ in range(4)]
+    days = ['Måndag', 'Tisdag', 'Onsdag',
+            'Torsdag', 'Fredag', 'Lördag', 'Söndag']
     return render(request, 'Test_app/index.html', {
-        'show_Test_app': False,
-        'Test_app': Test_app
+        'show_Test_app': True,
+        'Test_app': Test_app,
+        'days': days
     })

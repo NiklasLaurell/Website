@@ -41,61 +41,26 @@
             </colgroup>
             <thead class="u-black u-table-header u-table-header-1">
               <tr style="height: 21px;">
-                <th class="u-border-1 u-border-black u-table-cell">Måndag</th>
-                <th class="u-border-1 u-border-black u-table-cell">Tisdag</th>
-                <th class="u-border-1 u-border-black u-table-cell">Onsdag</th>
-                <th class="u-border-1 u-border-black u-table-cell">Torsdag</th>
-                <th class="u-border-1 u-border-black u-table-cell">Fredag</th>
-                <th class="u-border-1 u-border-black u-table-cell">Lördag</th>
-                <th class="u-border-1 u-border-black u-table-cell">Söndag</th>
+                {% for day in days %}
+                    <th class="u-border-1 u-border-black u-table-cell">{{day}}</th>
+                {% endfor %}
               </tr>
             </thead>
             <tbody class="u-table-body">
-              <tr style="height: 75px;">
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-              </tr>
-              <tr style="height: 76px;">
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-              </tr>
-              <tr style="height: 76px;">
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-              </tr>
-              <tr style="height: 76px;">
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"></td>
-              </tr>
+                {% if show_Test_app %}
+                    {% for row in Test_app %}
+                        <tr style="height: 76px;">
+                        {% for number in row %}
+                            <td class="u-border-1 u-border-grey-30 u-table-cell">{{number}}</td>
+                        {% endfor %}
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+
             </tbody>
           </table>
         </div>
       </div>
     </section>
-    {% if show_Test_app %}
-        <h2>{{ Test_app.0.title }}</h2>
-    {% else %}
-        <h2>{{ Test_app.1.title }}</h2>
-    {% endif %}    
   </body>
 </html>
