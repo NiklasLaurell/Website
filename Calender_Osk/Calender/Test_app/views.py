@@ -5,4 +5,11 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'Test_app/index.html')
+    Test_app = [
+        {'title': "Tester"},
+        {'title': "kukTester"}
+    ]
+    return render(request, 'Test_app/index.html', {
+        'show_Test_app': False,
+        'Test_app': Test_app
+    })
