@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    Test_app = [[i for i in range(7)] for _ in range(4)]
+    Test_app = [[i+j*7 for i in range(7)] for j in range(4)]
     days = ['Måndag', 'Tisdag', 'Onsdag',
             'Torsdag', 'Fredag', 'Lördag', 'Söndag']
     return render(request, 'Test_app/index.html', {
