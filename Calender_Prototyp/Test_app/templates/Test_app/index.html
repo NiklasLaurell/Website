@@ -9,7 +9,7 @@
        <div class="u-clearfix u-sheet u-sheet-1">
          <img class="u-image u-image-default u-preserve-proportions u-image-1" {% load static %} <img src="{% static "/Test_app/Images/arrow_up.png" %}" alt="" data-image-width="225" data-image-height="225">
          <img class="u-image u-image-default u-preserve-proportions u-image-2" {% load static %} <img src="{% static "/Test_app/Images/arrow_down.png" %}" alt="" data-image-width="225" data-image-height="225">
-         <h1 class="u-text u-text-default u-text-1">April 2222<span style="font-size: 1.5rem;">
+         <h1 class="u-text u-text-default u-text-1">{{time}}<span style="font-size: 1.5rem;">
          </h1>
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
           <table class="u-table-entity u-table-entity-1">
@@ -30,15 +30,17 @@
               </tr>
             </thead>
             <tbody class="u-table-body">
-                {% if show_Test_app %}
-                    {% for row in Test_app %}
-                        <tr style="height: 76px;">
-                        {% for number in row %}
-                            <td class="u-border-1 u-border-grey-30 u-table-cell">{{number}}</td>
-                        {% endfor %}
-                        </tr>
+                {% for row in matrix %}
+                    <tr style="height: 76px;">
+                    {% for date in row %}
+                        {% if date.2 == today.2 %}
+                            <td class="u-border-1 u-border-grey-30 u-table-cell">{{date}} IDAG</td>
+                        {% else %}
+                            <td class="u-border-1 u-border-grey-30 u-table-cell">{{date}}</td>
+                        {% endif %}
                     {% endfor %}
-                {% endif %}
+                    </tr>
+                {% endfor %}
 
             </tbody>
           </table>

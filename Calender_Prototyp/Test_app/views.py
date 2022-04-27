@@ -1,15 +1,18 @@
 from django.shortcuts import render
-
+from modules.calender_functions import get_matrix, get_time
 
 # Create your views here.
 
 
 def index(request):
-    Test_app = [[i+j*7 for i in range(7)] for j in range(4)]
+    time = get_time()
+    today = (time.year, time.month, time.day)
+    matrix = get_matrix(time, 6, 7)
     days = ['Måndag', 'Tisdag', 'Onsdag',
             'Torsdag', 'Fredag', 'Lördag', 'Söndag']
     return render(request, 'Test_app/index.html', {
-        'show_Test_app': True,
-        'Test_app': Test_app,
-        'days': days
+        'days': days,
+        'matrix': matrix,
+        'time': time,
+        'today': today
     })
