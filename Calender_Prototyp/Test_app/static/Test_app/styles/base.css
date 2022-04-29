@@ -58,7 +58,7 @@
 /* avgör tjocklek av linjerna typ */
 .u-border-1,
 a.u-button-style.u-border-1 {
-  border-width: 1px;
+  border-width: 5px;
 }
 
 /*textstil */
@@ -85,6 +85,20 @@ a.u-button-style.u-border-1 {
 .u-separator-grey-30:after {
   border-color: #b3b3b3;
 }
+
+.u-border-red-30
+.u-separator-red-30,:after {
+  border-color: #FF0000;
+}
+
+.button{
+    height: 100px;
+    right: 1000px;
+    overflow: hidden;
+    border: none;
+    outline: none;
+}
+
 
 
 .u-body
