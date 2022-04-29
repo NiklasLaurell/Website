@@ -1,0 +1,48 @@
+
+section{
+    padding: 10px;
+}
+
+.button{
+    height: 100px;
+    right: 1000px;
+    overflow: hidden;
+    border: none;
+    outline: none;
+}
+
+
+table, th, td {
+  table-layout: fixed;
+  width: 80%;
+
+  border-collapse: collapse;
+  border: 3px solid black;
+
+  margin: 0 auto;
+}
+
+th, td {
+  padding: 3px;
+}
+
+th {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+td  {
+    height: 60px;
+    text-align: left;
+    vertical-align: top;
+    color: #000000;
+    background-color: #d7d7d7;
+}
+
+.markday{
+    background-color: #89CFF0;
+}
+
+.markmonth{
+    background-color: #ffffff;
+}
