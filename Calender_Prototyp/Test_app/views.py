@@ -8,7 +8,6 @@ def index(request):
     print(request)
     time = get_time()
     today = (time.year, time.month, time.day)
-    counter = 0
     matrix = get_matrix(time, 6, 7)
 
     days = ['Måndag', 'Tisdag', 'Onsdag',
@@ -22,12 +21,15 @@ def index(request):
 
 
 def index2(request):
-    print(request)
+    if request.method == 'POST':
+        print("hej")
+
+
     time = get_time()
+
     today = (time.year, time.month, time.day)
 
     matrix = get_matrix(time, 8, 7)
-
 
     days = ['Måndag', 'Tisdag', 'Onsdag',
             'Torsdag', 'Fredag', 'Lördag', 'Söndag']
