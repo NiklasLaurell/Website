@@ -20,13 +20,10 @@
         <p> {{ time }} </p>
     </div>
     <div>
-        <!-- <button type="button"
-            onclick="document.getElementById('demo').innerHTML = Date()">
-            Click me to display Date and Time.
-        </button> -->
-
-        <a class="button button1" href="/Test_app/move"></a>
-        <a class="button button1" href="/Test_app/move"></a>
+        <form action="/Test_app/move" method="get">
+          <button class="button button1" name="riktning" type="submit" value="upp">UPP</button>
+          <button class="button button2" name="riktning" type="submit" value="down">NER</button>
+        </form>
     </div>
 
 
