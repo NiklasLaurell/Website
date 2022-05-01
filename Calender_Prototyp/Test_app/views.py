@@ -24,7 +24,6 @@ def index2(request):
     if request.method == 'POST':
         print("hej")
 
-
     time = get_time()
 
     today = (time.year, time.month, time.day)
