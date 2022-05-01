@@ -24,7 +24,10 @@ def index2(request):
     if request.method == 'POST':
         print("hej")
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8dce2123d4c33a05408240065738db4b6b137667
     time = get_time()
 
     today = (time.year, time.month, time.day)
