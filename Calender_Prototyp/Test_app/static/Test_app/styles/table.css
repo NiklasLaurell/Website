@@ -48,6 +48,21 @@ td  {
     margin-bottom: 20px;
 }
 
+.btnTest{
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+}
+
+.btnTest:hover {
+  background-color: #bdbdbd;
+
+}
+
+.fontSize{
+    font-size: 2em;
+}
+
 /* Fungerar inte riktgt som den ska.
 Försöker få själva pilen sötrre och centrerad utan att
 knappen i sig blir sörre*/
