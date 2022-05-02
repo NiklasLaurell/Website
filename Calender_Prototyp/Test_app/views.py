@@ -6,22 +6,20 @@ from modules.calender_functions import get_time, get_first_date, get_matrix
 
 def index(request):
     action = None
-    try:
-        QueryDict = request.POST
-        queryDict = dict(QueryDict)
-        print(queryDict)
-        if "direction" in queryDict:
-            action = queryDict["direction"][0]
-            action = action.split()
-            print(action)
-    except Exception:
-        print(Exception, "WTF")
+    QueryDict = request.POST
+    print(QueryDict)
+    queryDict = dict(QueryDict)
+    print(queryDict)
+    if "direction" in queryDict:
+        action = queryDict["direction"][0]
+        action = action.split()
+        print(action)
 
-    time = get_time()
+    time = get_time()  # today
 
     first_date = get_first_date(time, 6, 7, action)
-    a, b, c = first_date
-    first_date_str = f"{a} {b} {c}"
+    y, m, d = first_date
+    first_date_str = f"{y} {m} {d}"
     today = (time.year, time.month, time.day)
     matrix = get_matrix(6, 7, first_date)
     days = ['Måndag', 'Tisdag', 'Onsdag',
