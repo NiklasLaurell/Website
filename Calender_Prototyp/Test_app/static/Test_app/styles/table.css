@@ -47,3 +47,13 @@ td  {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+/* Fungerar inte riktgt som den ska.
+Försöker få själva pilen sötrre och centrerad utan att
+knappen i sig blir sörre*/
+.iconStyle{
+    align-items: center;
+    height: 100%;
+    padding: 0;
+
+}
