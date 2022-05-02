@@ -14,46 +14,33 @@
 
 <body>
 
+    <section id="s1">
 
-    <header>
         <nav><a href="/Test_app">Calender</a></nav>
-    </header>
-    <div>
-        <p> {{ time }} </p>
-        <h1 class="textStyle">{{ time }}</h1>
 
-    </div>
-    <div class="spacing">
+        <h1 class="textPos"> {{ time }} </h1>
+    </section>
+
+    <section>
+        <h3 class="textPos"> {{ month_and_year }} </h3>
         <form action="/Test_app/" method="post" class = "center">
-
-                {% csrf_token %}
-                <button
-
-                    type="submit"
-                    class ="btnTest"
-                    value="{{first_date_str}} upp" name="direction">
-                    <ion-icon name="arrow-up" class="fontSize" ></ion-icon>
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-square" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.5 9.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                    </svg> -->
-
-                </button>
-
-                <button
-                    type="submit"
-                    class ="btnTest"
-                    value="{{first_date_str}} ner"  name="direction">
-
-                    <ion-icon name="arrow-down" class="fontSize" ></ion-icon>
-
-                </button>
-
+            {% csrf_token %}
+            <button
+                type="submit"
+                class ="btnArrow"
+                value="{{first_date_str}} upp" name="direction">
+                <ion-icon name="arrow-up" class="fontSize" ></ion-icon>
+            </button>
+            <button
+                type="submit"
+                class ="btnArrow"
+                value="{{first_date_str}} ner" name="direction">
+                <ion-icon name="arrow-down" class="fontSize" ></ion-icon>
+            </button>
         </form>
-    </div>
+    </section>
 
-
-
-    <div >
+    <section id="s3">
         <table>
           <tr>
             {% for day in days %}
@@ -75,7 +62,7 @@
         {% endfor %}
 
         </table>
-    </div>
+    </section>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
