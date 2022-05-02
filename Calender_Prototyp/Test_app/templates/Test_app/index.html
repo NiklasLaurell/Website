@@ -16,22 +16,26 @@
     </header>
     <div>
         <p> {{ time }} </p>
-        <form action="/Test_app/" method="post">
-            {% csrf_token %}
-            <div class="container">
-                <button
-                    class="button button1" type="submit" value="{{first_date_str}} upp" name="direction">Upp
-                </button>
 
-                <button
-                    class="button button2" type="submit" value="{{first_date_str}} ner"  name="direction">Ner
+    </div>
+        <form action="/Test_app/" method="post">
+            <div id="formbox">
+                {% csrf_token %}
+                <button id="btn_s"
+                    type="submit"
+                    value="{{first_date_str}} upp" name="direction">Upp
+                </button>
+                <button id="btn_i"
+                    type="submit"
+                    value="{{first_date_str}} ner"  name="direction">Ner
                 </button>
             </div>
         </form>
-    </div>
 
 
-    <section>
+
+
+    <div>
         <table>
           <tr>
             {% for day in days %}
@@ -53,7 +57,7 @@
         {% endfor %}
 
         </table>
-    </section>
+    </div>
 
 </body>
 

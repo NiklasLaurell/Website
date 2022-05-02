@@ -53,9 +53,9 @@ def get_first_date(time_object, columns, rows, action) -> tuple:
     else:
         current_date = int(action[0]), int(action[1]), int(action[2])
         if action[3] == "upp":
-            return n_dates_forward(7, current_date)
-        elif action[3] == "ner":
             return n_dates_back(7, current_date)
+        elif action[3] == "ner":
+            return n_dates_forward(7, current_date)
     return (1, 1, 1)
 
 
