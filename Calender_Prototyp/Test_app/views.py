@@ -9,6 +9,7 @@ def index(request):
     try:
         QueryDict = request.POST
         queryDict = dict(QueryDict)
+        print(queryDict)
         if "direction" in queryDict:
             action = queryDict["direction"][0]
             action = action.split()
