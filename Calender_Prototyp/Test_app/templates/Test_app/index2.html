@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <!-- <script src="/static/Test_app/scripts/main.js"></script> -->
+    <title>Calender</title>
+    <link rel="stylesheet" href="/static/Test_app/Styles/table.css?<?php echo time(); ?>" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+
+    <section id="s1">
+
+        <nav><a href="/Test_app">Calender</a></nav>
+
+        <h1 class="textPos"> {{ time }} </h1>
+    </section>
+
+    <section>
+        <h3 class="textPos"> {{ month_and_year }} </h3>
+        <form action="/Test_app/" method="post" class = "center">
+            {% csrf_token %}
+            <button
+                type="submit"
+                class ="btnArrow"
+                value="{{first_date_str}} upp" name="direction">
+                <ion-icon name="arrow-up" class="fontSize" ></ion-icon>
+            </button>
+            <button
+                type="submit"
+                class ="btnArrow"
+                value="{{first_date_str}} ner" name="direction">
+                <ion-icon name="arrow-down" class="fontSize" ></ion-icon>
+            </button>
+        </form>
+    </section>
+
+    <section id="s3">
+        <table>
+          <tr>
+            {% for day in c.day_names %}
+                <th>{{day}}</th>
+            {% endfor %}
+          </tr>
+        {% for row in iterable %}
+          <tr>
+            {% for i in row %}
+                {% if calender.i == today %}
+                    <td  class = "markday" > {{ calender }}</td>
+                {% elif calender.i.1 == calender.i.1 %}
+                    <td  class = "markmonth" > {{ calender }}</td>
+                {% else %}
+                    <td> {{ calender }} </td>
+                {% endif %}
+            {% endfor %}
+          </tr>
+        {% endfor %}
+
+        </table>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+
+</html>
