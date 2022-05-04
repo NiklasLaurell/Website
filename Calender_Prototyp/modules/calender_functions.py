@@ -73,9 +73,7 @@ def get_matrix(columns: int, rows: int, first_date: tuple) -> list:
 
 
 def main():
-    matrix = get_matrix(datetime.now(), 9, 7)
-    from pprint import pprint
-    pprint(matrix)
+    pass
 
 
 if __name__ == '__main__':
