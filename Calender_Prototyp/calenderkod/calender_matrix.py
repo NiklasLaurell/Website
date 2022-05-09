@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from itertools import count
+from itertools import islice
 import calendar
 from datetime import datetime
 
@@ -88,7 +88,8 @@ class DisplaySettings:
 
 @dataclass()
 class CalenderMatrix:
-    display_settings: object
+    display_settings: object = field(repr=False)
+    first_date: tuple = field(repr=True, default=(0, 0, 0))
     calender: dict = field(init=False, repr=False)
     day_names: tuple = field(repr=False,
                              default=('Monday', 'Tuesday', 'Wednesday',
@@ -99,19 +100,32 @@ class CalenderMatrix:
                                         "April", "May", "June", "July",
                                         "August", "September", "October",
                                         "November", "December"))
+    n_days: int = field(init=False, repr=False)
 
     def __post_init__(self):
-        n_days = self.display_settings.n_squares
-        first_date = calculate_first_date()
-        self.calender = set_calender(first_date, n_days)
+        print(self.first_date)
+        self.n_days = self.display_settings.n_squares
+        if self.first_date == (0, 0, 0):
+            self.first_date = calculate_first_date()
+        self.calender = set_calender(self.first_date, self.n_days)
 
     def matrix_generater(self):
-        n = count()
-        x, y = self.display_settings.rows, self.display_settings.columns
-        return((next(n) for _ in range(x)) for _ in range(y))
+        it = iter(self.calender)
+        x = self.display_settings.rows
+        for i in range(0, len(self.calender), x):
+            yield {k: self.calender[k] for k in islice(it, x)}
 
     def get_month_name(self, month_number: int) -> str:
         return self.month_names[month_number+1]
+
+    def update_calender(self, action):
+        current_date = self.first_date
+        if action[3] == "upp":
+            self.first_date = n_dates_back(7, current_date)
+            self.calender = set_calender(self.first_date, self.n_days)
+        elif action[3] == "ner":
+            self.first_date = n_dates_forward(7, current_date)
+            self.calender = set_calender(self.first_date, self.n_days)
 
 
 def main():
@@ -124,9 +138,7 @@ def main():
     matrix = c.matrix_generater()
     print(matrix)
     for i in matrix:
-        for j in (i):
-            # print(j)
-            pass
+        print(dict(i))
 
 
 if __name__ == '__main__':

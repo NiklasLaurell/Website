@@ -1,4 +1,6 @@
 from django.shortcuts import render
+# import requests
+from django.core import serializers
 from calenderkod.calender_matrix import get_time, DisplaySettings, CalenderMatrix
 # Create your views here.
 
@@ -56,30 +58,43 @@ from calenderkod.calender_matrix import get_time, DisplaySettings, CalenderMatri
 def index(request):
     action = None
     QueryDict = request.POST
-    print(QueryDict)
+    # print(QueryDict)
     queryDict = dict(QueryDict)
-    print(queryDict)
+    # print(queryDict)
     if "direction" in queryDict:
         action = queryDict["direction"][0]
         action = action.split()
-        print(action)
+        # print(action)
 
     time = get_time()  # today
     today = (time.year, time.month, time.day)
     main_month = time.month
 
     settings = DisplaySettings()
-    c = CalenderMatrix(settings)
 
-    iterable = c.matrix_generater
+    if 'first_date' in request.session:
+        first_date = request.session['first_date']
 
+        c = CalenderMatrix(settings, first_date)
+        if action is not None:
+            c.update_calender(action)
+    else:
+        c = CalenderMatrix(settings)
+    first_date = c.first_date
+    request.session['first_date'] = first_date
+    request.session.modified = True
+    print(c)
+
+
+    # data = serializers.serialize("xml", CalenderMatrix.c.all())
+    # print(data)
+    # print(request.session.items())
     y, m, d = c.calender[0]
     first_date_str = f"{y} {m} {d}"
 
     month_and_year = f"{c.get_month_name(main_month)} {time.year}"
-    print(c)
-    html_variables = {'calender': c.calender,
-                      'iterable': iterable,
+    # print(c)
+    html_variables = {'calender': c.matrix_generater(),
                       'time': time,
                       'today': today,
                       'first_date_str': first_date_str,

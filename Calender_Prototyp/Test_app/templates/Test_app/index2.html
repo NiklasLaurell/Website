@@ -47,15 +47,15 @@
                 <th>{{day}}</th>
             {% endfor %}
           </tr>
-        {% for row in iterable %}
+        {% for week in calender %}
           <tr>
-            {% for i in row %}
-                {% if calender.i == today %}
-                    <td  class = "markday" > {{ calender }}</td>
-                {% elif calender.i.1 == calender.i.1 %}
-                    <td  class = "markmonth" > {{ calender }}</td>
+            {% for i, day in week.items %}
+                {% if day == today %}
+                    <td  class = "markday" > {{ day.2 }}</td>
+                {% elif day.2 == day.2 %}
+                    <td  class = "markmonth" > {{ day.2 }}</td>
                 {% else %}
-                    <td> {{ calender }} </td>
+                    <td> {{ day.2 }} </td>
                 {% endif %}
             {% endfor %}
           </tr>
